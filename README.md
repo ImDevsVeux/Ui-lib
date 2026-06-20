@@ -1,4 +1,5 @@
 
+```markdown
 # This Is A Skidded ui lib From Forsaken!!! it's same as Forsaken 🤤
 
 *it only have dropdown, slider , toggle, paragraph, Textbox no buttons yettt*
@@ -15,17 +16,21 @@ Tab -
 ```lua
 local tab = win:CreateTab({Title = "a tab"})
 ```
+
 Toggle -  
-`tab:Toggle({
+```lua
+tab:Toggle({
     Title = "Toggle",
     Desc = "Example toggle",
     Callback = function(val)
         print(val)
     end
-})`
+})
+```
 
 Slider -  
-`tab:Slider({
+```lua
+tab:Slider({
     Title = "Slider",
     Desc = "Example slider",
     Min = 16,
@@ -33,28 +38,34 @@ Slider -
     Callback = function(val)
         print(val)
     end
-})`
+})
+```
 
 Textbox -  
-`tab:Textbox({
+```lua
+tab:Textbox({
     Title = "Textbox",
     Desc = "Example textbox",
     Callback = function(val)
         print(val)
     end
-})`
+})
+```
 
 Dropdown -  
-`tab:Dropdown({
+```lua
+tab:Dropdown({
     Title = "Dropdown",
     Desc = "Example dropdown",
     Options = {"Option 1", "Option 2", "Option 3"},
     Callback = function(pick)
         print(pick)
     end
-})`
+})
+```
 
 
 The Ui lib is open sourced at  
 https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt
 And used many plugins to make it.
+```
