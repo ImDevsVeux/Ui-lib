@@ -64,6 +64,6 @@ tab:Dropdown({
 ```
 
 
-The Ui lib is open sourced at  
-https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt
-And used many plugins to make it.
+The Ui lib 
+used many plugins to make it
+ofc ultra skidding skills.
