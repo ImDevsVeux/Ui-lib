@@ -5,7 +5,7 @@
 
 
 Make the window  
-`local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/zijvxfmzjv-droid/Snsns/refs/heads/main/Bsnsn"))()  
+`local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt"))()  
 
 local win = lib:CreateWindow({Title = "Name idk"})`
 
@@ -53,6 +53,5 @@ Dropdown -
 
 
 The Ui lib is open sourced at  
-https://raw.githubusercontent.com/zijvxfmzjv-droid/Snsns/refs/heads/main/Bsnsn  
-
+https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt
 And used many plugins to make it.
