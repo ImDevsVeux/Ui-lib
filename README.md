@@ -5,13 +5,16 @@
 
 
 Make the window  
-`local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt"))()  
+```lua
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/ImDevsVeux/Ui-lib/refs/heads/main/Bsnsn.txt"))()  
 
-local win = lib:CreateWindow({Title = "Name idk"})`
+local win = lib:CreateWindow({Title = "Name idk"})
+```
 
 Tab -  
-`local tab = win:CreateTab({Title = "a tab"})`
-
+```lua
+local tab = win:CreateTab({Title = "a tab"})
+```
 Toggle -  
 `tab:Toggle({
     Title = "Toggle",
