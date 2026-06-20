@@ -1,0 +1,469 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88    @uniquadev
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER 
+]=]
+
+-- Instances: 810 | Scripts: 0 | Modules: 0 | Tags: 0
+local Library = {}
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+function Library:CreateWindow(options)
+    local Window = {}
+    local windowTitle = options.Title or "UI Library"
+
+    local v1a = Instance.new("ScreenGui")
+    v1a.Name = "CustomUILibrary"
+    v1a.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    v1a.Parent = PlayerGui
+
+    local joke1 = Instance.new("Frame")
+    joke1.Name = "SettingsScreen"
+    joke1.Size = UDim2.new(1, -20, 1, -20)
+    joke1.Position = UDim2.new(0.5, 0, 0.5, 0)
+    joke1.AnchorPoint = Vector2.new(0.5, 0.5)
+    joke1.BackgroundTransparency = 1
+    joke1.Parent = v1a
+
+    local v2h = Instance.new("ImageLabel")
+    v2h.Name = "SettingsContainer"
+    v2h.Size = UDim2.new(0.7, 0, 0.75, 0)
+    v2h.Position = UDim2.new(0.5, 0, 0.5, 0)
+    v2h.AnchorPoint = Vector2.new(0.5, 0.5)
+    v2h.BackgroundTransparency = 1
+    v2h.Image = "rbxassetid://123911976725450"
+    v2h.Parent = joke1
+
+    local joke829 = Instance.new("UIAspectRatioConstraint")
+    joke829.AspectRatio = 1.54
+    joke829.Parent = v2h
+
+    local Contents = Instance.new("ScrollingFrame")
+    Contents.Name = "Contents"
+    Contents.Size = UDim2.new(0.95, 0, 0.935, 0)
+    Contents.Position = UDim2.new(0.5, 0, 0.035, 0)
+    Contents.AnchorPoint = Vector2.new(0.5, 0)
+    Contents.BackgroundTransparency = 1
+    Contents.BorderSizePixel = 0
+    Contents.ScrollBarThickness = 8
+    Contents.Active = true
+    Contents.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
+    Contents.VerticalScrollBarInset = Enum.ScrollBarInset.Always
+    Contents.AutomaticCanvasSize = Enum.AutomaticSize.Y
+    Contents.CanvasSize = UDim2.new(0, 0, 0, 0)
+    Contents.TopImage = "rbxassetid://18912599863"
+    Contents.MidImage = "rbxassetid://18912597717"
+    Contents.BottomImage = "rbxassetid://18912598903"
+    Contents.Parent = v2h
+
+    local v3x = Instance.new("UIPadding")
+    v3x.PaddingLeft = UDim.new(0.025, 0)
+    v3x.Parent = Contents
+
+    local v4q = Instance.new("UIListLayout")
+    v4q.HorizontalAlignment = Enum.HorizontalAlignment.Center
+    v4q.Padding = UDim.new(0, 10)
+    v4q.SortOrder = Enum.SortOrder.LayoutOrder
+    v4q.Parent = Contents
+
+    local fnt1 = Font.new("rbxasset://fonts/families/AccanthisADFStd.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+
+    local function gs2(name, desc)
+        local SettingFrame = Instance.new("Frame")
+        SettingFrame.Name = name:gsub("%s+", "")
+        SettingFrame.Size = UDim2.new(0.7, 0, 0.075, 25)
+        SettingFrame.BackgroundTransparency = 1
+        SettingFrame.BorderSizePixel = 0
+
+        local SettingName = Instance.new("TextLabel")
+        SettingName.Name = "SettingName"
+        SettingName.Size = UDim2.new(0.6, 0, 0.65, 0)
+        SettingName.BackgroundTransparency = 1
+        SettingName.FontFace = fnt1
+        SettingName.TextColor3 = Color3.fromRGB(255, 255, 255)
+        SettingName.TextScaled = true
+        SettingName.TextXAlignment = Enum.TextXAlignment.Left
+        SettingName.RichText = true
+        SettingName.Text = name
+        SettingName.Parent = SettingFrame
+
+        local SettingDesc = Instance.new("TextLabel")
+        SettingDesc.Name = "SettingDesc"
+        SettingDesc.Size = UDim2.new(0.7, 0, 0.4, 0)
+        SettingDesc.Position = UDim2.new(0, 0, 1, 0)
+        SettingDesc.AnchorPoint = Vector2.new(0, 1)
+        SettingDesc.BackgroundTransparency = 1
+        SettingDesc.FontFace = fnt1
+        SettingDesc.TextColor3 = Color3.fromRGB(255, 255, 255)
+        SettingDesc.TextScaled = true
+        SettingDesc.TextXAlignment = Enum.TextXAlignment.Left
+        SettingDesc.RichText = true
+        SettingDesc.Text = desc
+        SettingDesc.Parent = SettingFrame
+
+        local v5r = Instance.new("ImageButton")
+        v5r.Name = "Reset"
+        v5r.Size = UDim2.new(0.125, 0, 1, 0)
+        v5r.Position = UDim2.new(-0.1, 0, 0.5, 0)
+        v5r.AnchorPoint = Vector2.new(0.5, 0.5)
+        v5r.BackgroundTransparency = 1
+        v5r.Image = "rbxassetid://89008322108617"
+        v5r.Parent = SettingFrame
+
+        Instance.new("UIAspectRatioConstraint", v5r)
+
+        return SettingFrame
+    end
+
+    function Window:CreateTab(tabOptions)
+        local Tab = {}
+        local title = tabOptions.Title or "New Tab"
+
+        local Category = Instance.new("ImageLabel")
+        Category.Name = title
+        Category.Size = UDim2.new(0.99, 0, 0, 60)
+        Category.BackgroundTransparency = 1
+        Category.Image = "rbxassetid://19000746528"
+        Category.Parent = Contents
+
+        local HeaderTitle = Instance.new("TextLabel")
+        HeaderTitle.Name = "Title"
+        HeaderTitle.Size = UDim2.new(1, 0, 0.65, 0)
+        HeaderTitle.Position = UDim2.new(0.5, 0, 0.5, 0)
+        HeaderTitle.AnchorPoint = Vector2.new(0.5, 0.5)
+        HeaderTitle.BackgroundTransparency = 1
+        HeaderTitle.FontFace = fnt1
+        HeaderTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+        HeaderTitle.TextSize = 36
+        HeaderTitle.RichText = true
+        HeaderTitle.Text = title
+        HeaderTitle.Parent = Category
+
+        function Tab:Paragraph(opt)
+            local titleText = opt.Title or "Header"
+            local text = opt.Text or "Text goes here"
+
+            local v6p = Instance.new("Frame")
+            v6p.Name = "ParagraphGroup"
+            v6p.Size = UDim2.new(0.9, 0, 0, 0)
+            v6p.BackgroundTransparency = 1
+            v6p.AutomaticSize = Enum.AutomaticSize.Y
+            v6p.Parent = Contents
+
+            local v7l = Instance.new("UIListLayout")
+            v7l.SortOrder = Enum.SortOrder.LayoutOrder
+            v7l.HorizontalAlignment = Enum.HorizontalAlignment.Center
+            v7l.Padding = UDim.new(0, 8)
+            v7l.Parent = v6p
+
+            local fnt2 = Font.new("rbxasset://fonts/families/AccanthisADFStd.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
+
+            local TitleLabel = Instance.new("TextLabel")
+            TitleLabel.Name = "Header"
+            TitleLabel.Size = UDim2.new(1, 0, 0, 30)
+            TitleLabel.BackgroundTransparency = 1
+            TitleLabel.FontFace = fnt2
+            TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TitleLabel.TextScaled = true
+            TitleLabel.Text = titleText
+            TitleLabel.LayoutOrder = 1
+            TitleLabel.Parent = v6p
+
+            local v8s = Instance.new("Frame")
+            v8s.Name = "SeparatorContainer"
+            v8s.Size = UDim2.new(1, 0, 0, 5)
+            v8s.BackgroundTransparency = 1
+            v8s.LayoutOrder = 2
+            v8s.Parent = v6p
+
+            local v9m = Instance.new("Frame")
+            v9m.Name = "MainLine"
+            v9m.Size = UDim2.new(0.85, 0, 1, 0)
+            v9m.Position = UDim2.new(0.5, 0, 0, 0)
+            v9m.AnchorPoint = Vector2.new(0.5, 0)
+            v9m.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            v9m.BorderSizePixel = 0
+            v9m.Parent = v8s
+
+            local TextLabel1 = Instance.new("TextLabel")
+            TextLabel1.Name = "Content"
+            TextLabel1.Size = UDim2.new(0.95, 0, 0, 0)
+            TextLabel1.BackgroundTransparency = 1
+            TextLabel1.FontFace = fnt1
+            TextLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextLabel1.TextSize = 20
+            TextLabel1.TextXAlignment = Enum.TextXAlignment.Left
+            TextLabel1.TextYAlignment = Enum.TextYAlignment.Top
+            TextLabel1.TextWrapped = true
+            TextLabel1.RichText = true
+            TextLabel1.Text = text
+            TextLabel1.AutomaticSize = Enum.AutomaticSize.Y
+            TextLabel1.LayoutOrder = 3
+            TextLabel1.Parent = v6p
+        end
+
+        function Tab:Toggle(opt)
+            local name = opt.Title or "Toggle"
+            local desc = opt.Desc or ""
+            local default = opt.Default or false
+            local callback = opt.Callback or function() end
+
+            local SettingFrame = gs2(name, desc)
+            SettingFrame.Parent = Contents
+
+            local v10b = Instance.new("ImageButton")
+            v10b.Name = "CheckboxButton"
+            v10b.Size = UDim2.new(0.25, 0, 1, 0)
+            v10b.Position = UDim2.new(0.875, 0, 0.5, 0)
+            v10b.AnchorPoint = Vector2.new(0.5, 0.5)
+            v10b.BackgroundTransparency = 1
+            v10b.Image = "rbxassetid://18953971849"
+            v10b.Parent = SettingFrame
+
+            Instance.new("UIAspectRatioConstraint", v10b)
+
+            local v11c = Instance.new("ImageLabel")
+            v11c.Name = "Checked"
+            v11c.Size = UDim2.new(0.75, 0, 0.75, 0)
+            v11c.Position = UDim2.new(0.5, 0, 0.5, 0)
+            v11c.AnchorPoint = Vector2.new(0.5, 0.5)
+            v11c.BackgroundTransparency = 1
+            v11c.Image = "rbxassetid://18953976521"
+            v11c.ScaleType = Enum.ScaleType.Fit
+            v11c.Visible = default
+            v11c.ZIndex = 2
+            v11c.Parent = v10b
+
+            local state = default
+            v10b.MouseButton1Click:Connect(function()
+                state = not state
+                v11c.Visible = state
+                callback(state)
+            end)
+        end
+
+        function Tab:Slider(opt)
+            local name = opt.Title or "Slider"
+            local desc = opt.Desc or ""
+            local min = opt.Min or 0
+            local max = opt.Max or 100
+            local default = opt.Default or min
+            local callback = opt.Callback or function() end
+
+            local SettingFrame = gs2(name, desc)
+            SettingFrame.Parent = Contents
+
+            local v12g = Instance.new("ImageLabel")
+            v12g.Name = "DragBarBackground"
+            v12g.Size = UDim2.new(0.5, 0, 0.725, 0)
+            v12g.Position = UDim2.new(0.875, 0, 0.5, 0)
+            v12g.AnchorPoint = Vector2.new(0.5, 0.5)
+            v12g.BackgroundTransparency = 1
+            v12g.Image = "rbxassetid://125225912214611"
+            v12g.ImageColor3 = Color3.fromRGB(0, 0, 0)
+            v12g.Parent = SettingFrame
+
+            local DragBar = Instance.new("Frame")
+            DragBar.Name = "DragBar"
+            DragBar.Size = UDim2.new(0.4, 0, 0.725, 0)
+            DragBar.Position = UDim2.new(0.875, 0, 0.5, 0)
+            DragBar.AnchorPoint = Vector2.new(0.5, 0.5)
+            DragBar.BackgroundTransparency = 1
+            DragBar.Parent = SettingFrame
+
+            local Dragger = Instance.new("ImageButton")
+            Dragger.Name = "Dragger"
+            Dragger.Size = UDim2.new(0.5, 0, 0.75, 0)
+            Dragger.Position = UDim2.new(0.5, 0, 0.5, 0)
+            Dragger.AnchorPoint = Vector2.new(0.5, 0.5)
+            Dragger.BackgroundTransparency = 1
+            Dragger.Image = "rbxassetid://130893928901265"
+            Dragger.ImageColor3 = Color3.fromRGB(220, 220, 220)
+            Dragger.Parent = DragBar
+            Instance.new("UIAspectRatioConstraint", Dragger)
+
+            local TitleLabel = Instance.new("TextLabel")
+            TitleLabel.Name = "Title"
+            TitleLabel.Size = UDim2.new(2, 0, 0.8, 0)
+            TitleLabel.Position = UDim2.new(0.5, 0, 0, 0)
+            TitleLabel.AnchorPoint = Vector2.new(0.5, 0.9)
+            TitleLabel.BackgroundTransparency = 1
+            TitleLabel.FontFace = fnt1
+            TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TitleLabel.TextScaled = true
+            TitleLabel.Text = tostring(default)
+            TitleLabel.Parent = Dragger
+
+            local dragging = false
+            Dragger.InputBegan:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                    dragging = true
+                end
+            end)
+            UserInputService.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                    dragging = false
+                end
+            end)
+            UserInputService.InputChanged:Connect(function(input)
+                if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+                    local mousePos = UserInputService:GetMouseLocation().X
+                    local barAbsPos = DragBar.AbsolutePosition.X
+                    local barAbsSize = DragBar.AbsoluteSize.X
+
+                    local percent = math.clamp((mousePos - barAbsPos) / barAbsSize, 0, 1)
+                    local value = math.floor(min + ((max - min) * percent))
+
+                    Dragger.Position = UDim2.new(percent, 0, 0.5, 0)
+                    TitleLabel.Text = tostring(value)
+
+                    callback(value)
+                end
+            end)
+
+            local defaultPercent = math.clamp((default - min) / (max - min), 0, 1)
+            Dragger.Position = UDim2.new(defaultPercent, 0, 0.5, 0)
+        end
+
+        function Tab:Textbox(opt)
+            local name = opt.Title or "Textbox"
+            local desc = opt.Desc or ""
+            local default = opt.Default or ""
+            local callback = opt.Callback or function() end
+
+            local SettingFrame = gs2(name, desc)
+            SettingFrame.Parent = Contents
+
+            local v13t = Instance.new("ImageLabel")
+            v13t.Name = "TextboxBackground"
+            v13t.Size = UDim2.new(0.4, 0, 0.8, 0)
+            v13t.Position = UDim2.new(0.875, 0, 0.5, 0)
+            v13t.AnchorPoint = Vector2.new(0.5, 0.5)
+            v13t.BackgroundTransparency = 1
+            v13t.Image = "rbxassetid://18954013854"
+            v13t.Parent = SettingFrame
+
+            local TextBox = Instance.new("TextBox")
+            TextBox.Name = "Textbox"
+            TextBox.Size = UDim2.new(0.85, 0, 0.5, 0)
+            TextBox.Position = UDim2.new(0.5, 0, 0.52, 0)
+            TextBox.AnchorPoint = Vector2.new(0.5, 0.5)
+            TextBox.BackgroundTransparency = 1
+            TextBox.FontFace = fnt1
+            TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+            TextBox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+            TextBox.TextScaled = true
+            TextBox.ClearTextOnFocus = false
+            TextBox.PlaceholderText = "..."
+            TextBox.Text = default
+            TextBox.Parent = v13t
+
+            TextBox.FocusLost:Connect(function()
+                callback(TextBox.Text)
+            end)
+        end
+
+        function Tab:Dropdown(opt)
+            local name = opt.Title or "Dropdown"
+            local desc = opt.Desc or ""
+            local optionsList = opt.Options or {}
+            local default = opt.Default or "Select"
+            local callback = opt.Callback or function() end
+
+            local SettingFrame = gs2(name, desc)
+            SettingFrame.Parent = Contents
+
+            local DropdownFrame = Instance.new("ImageButton")
+            DropdownFrame.Name = "DropdownFrame"
+            DropdownFrame.Size = UDim2.new(0.35, 0, 1, 0)
+            DropdownFrame.Position = UDim2.new(0.875, 0, 0.5, 0)
+            DropdownFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+            DropdownFrame.BackgroundTransparency = 1
+            DropdownFrame.Image = "rbxassetid://18954013854"
+            DropdownFrame.ZIndex = 2
+            DropdownFrame.Parent = SettingFrame
+
+            local v14a = Instance.new("UIAspectRatioConstraint")
+            v14a.AspectRatio = 4.3
+            v14a.Parent = DropdownFrame
+
+            local v15w = Instance.new("ImageLabel")
+            v15w.Name = "DropdownArrow"
+            v15w.Size = UDim2.new(0.15, 0, 0.75, 0)
+            v15w.Position = UDim2.new(0.07, 0, 0.5, 0)
+            v15w.AnchorPoint = Vector2.new(0, 0.5)
+            v15w.BackgroundTransparency = 1
+            v15w.Image = "rbxassetid://18954016422"
+            v15w.Parent = DropdownFrame
+
+            local v16e = Instance.new("ImageLabel")
+            v16e.Name = "ChosenValue"
+            v16e.Size = UDim2.new(0.656, 0, 0.75, 0)
+            v16e.Position = UDim2.new(0.272, 0, 0.153, 0)
+            v16e.BackgroundTransparency = 1
+            v16e.Image = "rbxassetid://18954024670"
+            v16e.Parent = DropdownFrame
+
+            local TitleLabel = Instance.new("TextLabel")
+            TitleLabel.Name = "Title"
+            TitleLabel.Size = UDim2.new(0.7, 0, 0.7, 0)
+            TitleLabel.Position = UDim2.new(0.5, 0, 0.143, 0)
+            TitleLabel.AnchorPoint = Vector2.new(0.5, 0)
+            TitleLabel.BackgroundTransparency = 1
+            TitleLabel.FontFace = fnt1
+            TitleLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+            TitleLabel.TextScaled = true
+            TitleLabel.Text = default
+            TitleLabel.Parent = v16e
+
+            local Options = Instance.new("Frame")
+            Options.Name = "Options"
+            Options.Size = UDim2.new(1, 0, 0, 0)
+            Options.Position = UDim2.new(0.5, 0, 1, 0)
+            Options.AnchorPoint = Vector2.new(0.5, 0)
+            Options.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            Options.BackgroundTransparency = 0.5
+            Options.BorderSizePixel = 0
+            Options.AutomaticSize = Enum.AutomaticSize.Y
+            Options.Visible = false
+            Options.Parent = DropdownFrame
+
+            Instance.new("UIListLayout", Options).SortOrder = Enum.SortOrder.LayoutOrder
+
+            for _, optString in ipairs(optionsList) do
+                local v17o = Instance.new("TextButton")
+                v17o.Size = UDim2.new(1, 0, 0, 30)
+                v17o.BackgroundTransparency = 1
+                v17o.FontFace = fnt1
+                v17o.TextColor3 = Color3.fromRGB(255, 255, 255)
+                v17o.TextScaled = true
+                v17o.Text = optString
+                v17o.Parent = Options
+
+                v17o.MouseButton1Click:Connect(function(pick)
+                    TitleLabel.Text = optString
+                    Options.Visible = false
+                    callback(optString)
+                end)
+            end
+
+            DropdownFrame.MouseButton1Click:Connect(function()
+                Options.Visible = not Options.Visible
+            end)
+        end
+
+        return Tab
+    end
+
+    return Window
+end
+
+return Library
